@@ -12,7 +12,7 @@ import frc.robot.subsystems.*;
 
 public class ClimbUp extends Command {
   public ClimbUp() {
-    
+    requires(Robot.climbSubsytem);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +24,7 @@ public class ClimbUp extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    ;   
+    Robot.climbSubsytem.climbUp();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -42,5 +42,6 @@ public class ClimbUp extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+  Robot.climbSubsytem.stopClimb();
   }
 }

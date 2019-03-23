@@ -27,10 +27,9 @@ public class PneumaticsSubsytem extends Subsystem {
 	public DoubleSolenoid shifterSolenoids;
 
 	public PneumaticsSubsytem() {
-		grabberSolenoid = new DoubleSolenoid(0,1);
-    	circledSolenoid = new DoubleSolenoid(2,3);
+    	circledSolenoid = new DoubleSolenoid(4,5);
     	InNOut = new Solenoid (6); 
-		shifterSolenoids = new DoubleSolenoid(4,5);
+		shifterSolenoids = new DoubleSolenoid(0,1);
 	}
 	
 
@@ -45,22 +44,22 @@ public class PneumaticsSubsytem extends Subsystem {
 		}
 	}
 
-	 public void GetCircled(String Circled){
-		if(Circled == "true"){
-			//InNOut.set(Solenoid.getPCMSolenoidVoltageFault(7));
-		} else if (Circled == "false"){
+	 public void getCircled(){
+		//if(Circled == "true"){
+			circledSolenoid.set(DoubleSolenoid.Value.kReverse);	
+		//} else if (Circled == "false"){
 			//InNOut.class
-		}
+		//}
 	}
 
-	public void NotGetCircled(String NotCircle){
-		if (NotCircle == "true"){
-			//notGetCircledSolenoid.set(DoubleSolenoid.Value.kForward);
-		} else if (NotCircle == "false"){
+	public void getCircledV2(){
+		//if (NotCircle == "true"){
+		circledSolenoid.set(DoubleSolenoid.Value.kForward);
+		//} else if (NotCircle == "false"){
 			//notGetCircledSolenoid.set(DoubleSolenoid.Value.kReverse);
-		} else if (NotCircle == "off"){
+	//	} else if (NotCircle == "off"){
 			//notGetCircledSolenoid.set(DoubleSolenoid.Value.kOff);
-		}
+	//	}
 	}
 
 	public void GetCircledV2(String CircledV2){
@@ -85,9 +84,16 @@ public class PneumaticsSubsytem extends Subsystem {
 	shifterSolenoids.set(DoubleSolenoid.Value.kForward); 
 	}
 	public void shiftDown() {
-		shifterSolenoids.set(DoubleSolenoid.Value.kForward); 
+	shifterSolenoids.set(DoubleSolenoid.Value.kReverse); 
 	}
+	
 
+	public void intakeCircle()	{
+	  InNOut.set(true);
+	} 
+	public void notIntakeCircle(){
+		InNOut.set(false);
+	}
   @Override
   public void initDefaultCommand() {
   }

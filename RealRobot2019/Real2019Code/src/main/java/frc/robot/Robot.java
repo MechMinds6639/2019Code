@@ -26,6 +26,8 @@ import frc.robot.OI;
 public class Robot extends TimedRobot {
     public static DriveSubsystem driveSubsystem;
     public static PneumaticsSubsytem pneumaticSubsystem;
+    public static ClimbSubsytem climbSubsytem;
+    public static ClampSubsystem clampSubsystem;
         
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -37,6 +39,8 @@ public class Robot extends TimedRobot {
     public void robotInit() {
       driveSubsystem = new DriveSubsystem();
       pneumaticSubsystem = new PneumaticsSubsytem();
+      climbSubsytem = new ClimbSubsytem();
+      clampSubsystem = new ClampSubsystem();
       oi = new OI();
 
     }

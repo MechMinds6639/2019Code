@@ -14,14 +14,14 @@ import frc.robot.subsystems.*;
 
 public class NotGetCircled extends Command {
   public NotGetCircled() {
-   
+   requires(Robot.pneumaticSubsystem);
 
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    requires(Robot.pneumaticSubsystem);
+    Robot.pneumaticSubsystem.intakeCircle();
   }
 
   // Called repeatedly when this Command is scheduled to run
