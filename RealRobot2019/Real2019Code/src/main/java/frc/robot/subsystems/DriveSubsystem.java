@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.OI;
-import frc.robot.RobotMap;
 import frc.robot.commands.UserDrive;
 
 public class DriveSubsystem extends Subsystem {
@@ -27,8 +26,7 @@ public class DriveSubsystem extends Subsystem {
   public WPI_TalonSRX _leftFollower;
   public WPI_TalonSRX _leftFollower2;
   DifferentialDrive _diffDrive;
-    //Talon Declarations
-    
+
     // public DriveSubsystem() {
 
     // }

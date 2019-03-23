@@ -55,9 +55,19 @@ public class OI {
   }
   
  public double getX() {
-    return _joystick.getX() * - RobotMap.maxSpeed;
+    if (_joystick.getX() > deadband){
+      return _joystick.getX() * - RobotMap.maxSpeed;
+    }
+    else{
+      return 0;
+    }
  }
   public double getY(){
+    if (_joystick.getY() > turnDeadband){
     return _joystick.getY() * - RobotMap.maxSpeed;
+    }
+    else{
+      return 0;
+    }
   }
 }
