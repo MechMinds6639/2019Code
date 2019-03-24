@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode.PixelFormat;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -42,6 +45,8 @@ public class Robot extends TimedRobot {
       climbSubsytem = new ClimbSubsytem();
       clampSubsystem = new ClampSubsystem();
       oi = new OI();
+      UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+      camera1.setVideoMode(PixelFormat.kMJPEG, 200, 150, 30);
 
     }
  

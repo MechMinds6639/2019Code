@@ -19,6 +19,7 @@ import frc.robot.commands.GetCircled;
 import frc.robot.commands.GetCircledV2;
 import frc.robot.commands.NotGetCircled;
 import frc.robot.commands.NotGetCircledV2;
+import frc.robot.commands.ObtainCircle;
 import frc.robot.commands.ShiftDown;
 import frc.robot.commands.ShiftUp;
 import frc.robot.commands.UnClamp;
@@ -39,6 +40,7 @@ public class OI {
   public static double turnDeadband;
   public static Button Clamp;
   public static Button UnClamp;
+  public static Button obtainCircle;
   // COMMANDS
   public OI() {
     // JOYSTICKS
@@ -55,6 +57,7 @@ public class OI {
     climbDown = new JoystickButton(_joystick,11);
     Clamp = new JoystickButton (_joystick, 7);
     UnClamp = new JoystickButton(_joystick, 8);
+    obtainCircle = new JoystickButton(_joystick, 12);
     // DEADBANDS
     deadband = 0.0;
     turnDeadband = 0.0;
@@ -78,22 +81,24 @@ public class OI {
     // Clamp
     Clamp.whileHeld(new Clamp());
     UnClamp.whileHeld(new UnClamp());
+
+    obtainCircle.whenPressed(new ObtainCircle());
   }
   
  public double getX() {
-    //if (_joystick.getX()> deadband){
+    if (Math.abs(_joystick.getX())> deadband){
       return _joystick.getX() * - RobotMap.maxSpeed;
-    //}
-    //else{
-      //return 0;
-    //}
+    }
+    else{
+    return 0;
+    }
  }
   public double getY(){
-    //if (_joystick.getY() > turnDeadband){
+    if (Math.abs(_joystick.getY()) > turnDeadband){
     return _joystick.getY() * - RobotMap.maxSpeed;
-    //}
-    //else{
-    //  return 0;
-    //}
+    }
+    else{
+      return 0;
+    }
   }
 }
