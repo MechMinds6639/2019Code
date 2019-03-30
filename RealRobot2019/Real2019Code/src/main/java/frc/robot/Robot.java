@@ -30,12 +30,12 @@ public class Robot extends TimedRobot {
     public static DriveSubsystem driveSubsystem;
     public static PneumaticsSubsytem pneumaticSubsystem;
     public static ClimbSubsytem climbSubsytem;
-    public static ClampSubsystem clampSubsystem;
-        
+    //public static ClampSubsystem clampSubsystem;
+      
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-    //THEESE HAVE TO AT THE BOTTOM
+    //HAS TO BE AT THE BOTTOM
     public static OI oi;
 
     @Override
@@ -43,7 +43,7 @@ public class Robot extends TimedRobot {
       driveSubsystem = new DriveSubsystem();
       pneumaticSubsystem = new PneumaticsSubsytem();
       climbSubsytem = new ClimbSubsytem();
-      clampSubsystem = new ClampSubsystem();
+     // clampSubsystem = new ClampSubsystem();
       oi = new OI();
       UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
       camera1.setVideoMode(PixelFormat.kMJPEG, 200, 150, 30);
@@ -52,12 +52,10 @@ public class Robot extends TimedRobot {
  
   @Override
   public void robotPeriodic() {
-
   }
 
   @Override
   public void disabledInit() {
-
   }
 
   @Override

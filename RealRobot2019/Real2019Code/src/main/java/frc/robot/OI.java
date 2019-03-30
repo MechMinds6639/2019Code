@@ -7,22 +7,20 @@
 
 package frc.robot;
 
-//import com.sun.tools.classfile.StackMapTable_attribute.stack_map_frame;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.Clamp;
+//import frc.robot.commands.Clamp;
 import frc.robot.commands.ClimbDown;
 import frc.robot.commands.ClimbUp;
-import frc.robot.commands.GetCircled;
-import frc.robot.commands.GetCircledV2;
-import frc.robot.commands.NotGetCircled;
-import frc.robot.commands.NotGetCircledV2;
+import frc.robot.commands.CloseGripper;
+import frc.robot.commands.OpenGripper;
+import frc.robot.commands.OutGripper;
+import frc.robot.commands.InGripper;
 import frc.robot.commands.ObtainCircle;
 import frc.robot.commands.ShiftDown;
 import frc.robot.commands.ShiftUp;
-import frc.robot.commands.UnClamp;
+//import frc.robot.commands.UnClamp;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -31,9 +29,10 @@ import frc.robot.commands.UnClamp;
 public class OI {
 
   public static Joystick _joystick;
+ // public static Joystick _joystick2;
   public static Button ShiftUp, ShiftDown;
-  public static Button GetCircled, GetCircledV2;
-  public static Button NotGetCircled, NotGetCircledV2;
+  public static Button CloseGripper, OpenIntake;
+  public static Button OutGripper, InGripper;
   public static Button climbUp;
   public static Button climbDown;
   public static double deadband;
@@ -41,46 +40,51 @@ public class OI {
   public static Button Clamp;
   public static Button UnClamp;
   public static Button obtainCircle;
+  
   // COMMANDS
   public OI() {
+    
     // JOYSTICKS
-    _joystick = new Joystick(0);
+    _joystick = new Joystick(0);  //Joystick
+   // _joystick2 = new Joystick(1); //Xbox Computer
+
     // BUTTONS
     ShiftUp = new JoystickButton(_joystick, 1);
     ShiftDown = new JoystickButton(_joystick, 2);
-
-    GetCircled = new JoystickButton(_joystick, 6); //open close
-    GetCircledV2 = new JoystickButton(_joystick, 4);
-    NotGetCircled = new JoystickButton(_joystick, 5); //In and out
-    NotGetCircledV2 = new JoystickButton(_joystick, 3);
+    CloseGripper = new JoystickButton(_joystick, 6); //open close
+    OpenIntake = new JoystickButton(_joystick, 4);
+    OutGripper = new JoystickButton(_joystick, 5); //In and out
+    InGripper = new JoystickButton(_joystick, 3);
     climbUp = new JoystickButton(_joystick, 10);
     climbDown = new JoystickButton(_joystick,11);
-    Clamp = new JoystickButton (_joystick, 7);
-    UnClamp = new JoystickButton(_joystick, 8);
+    //Clamp = new JoystickButton (_joystick, 7);
+    //UnClamp = new JoystickButton(_joystick, 8);
     obtainCircle = new JoystickButton(_joystick, 12);
+    
     // DEADBANDS
     deadband = 0.0;
     turnDeadband = 0.0;
+    
     // SHIFTs
     ShiftUp.whenPressed(new ShiftUp());
     ShiftDown.whenPressed(new ShiftDown());
 
 
-    // Intake AKA GET CIRCLEDDDDDDDDDDDDDDD
-    GetCircled.whenPressed(new GetCircled());
-    GetCircledV2.whenPressed(new GetCircledV2());
+    //
+    CloseGripper.whenPressed(new CloseGripper());
+    OpenIntake.whenPressed(new OpenGripper());
 
-    // Not Intake AKA NOT GET CIRCLEDDDDDDDDDD
-    NotGetCircled.whenPressed(new NotGetCircled());
-    NotGetCircledV2.whenPressed(new NotGetCircledV2());
+    //OutGripper
+   OutGripper.whenPressed(new OutGripper());
+    InGripper.whenPressed(new InGripper());
 
     // Climb
     climbUp.whileHeld(new ClimbUp());
     climbDown.whileHeld(new ClimbDown());
 
     // Clamp
-    Clamp.whileHeld(new Clamp());
-    UnClamp.whileHeld(new UnClamp());
+    //Clamp.whileHeld(new Clamp());
+    //UnClamp.whileHeld(new UnClamp());
 
     obtainCircle.whenPressed(new ObtainCircle());
   }

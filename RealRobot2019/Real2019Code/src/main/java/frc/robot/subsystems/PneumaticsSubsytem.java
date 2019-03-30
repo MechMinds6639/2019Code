@@ -10,18 +10,10 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
-import frc.robot.commands.GetCircledV2;
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
 
-/**
- * Add your docs here.
- * 
- */
+
 public class PneumaticsSubsytem extends Subsystem {
-	public DoubleSolenoid grabberSolenoid;
+	//public DoubleSolenoid grabberSolenoid;
     public DoubleSolenoid circledSolenoid;
     public Solenoid InNOut; 
 	public DoubleSolenoid shifterSolenoids;
@@ -32,52 +24,11 @@ public class PneumaticsSubsytem extends Subsystem {
 		shifterSolenoids = new DoubleSolenoid(0,1);
 	}
 	
-
-	public void clampGrabber(String clamped) {
-		if(clamped == "true") {
-			grabberSolenoid.set(DoubleSolenoid.Value.kForward);
-		} else if (clamped == "false") {
-			grabberSolenoid.set(DoubleSolenoid.Value.kReverse);
-
-		} else if (clamped == "off") {
-			grabberSolenoid.set(DoubleSolenoid.Value.kOff);
-		}
+	 public void closeGripper(){
+		circledSolenoid.set(DoubleSolenoid.Value.kReverse);	
 	}
-
-	 public void getCircled(){
-		//if(Circled == "true"){
-			circledSolenoid.set(DoubleSolenoid.Value.kReverse);	
-		//} else if (Circled == "false"){
-			//InNOut.class
-		//}
-	}
-
-	public void getCircledV2(){
-		//if (NotCircle == "true"){
+	public void openGripper(){
 		circledSolenoid.set(DoubleSolenoid.Value.kForward);
-		//} else if (NotCircle == "false"){
-			//notGetCircledSolenoid.set(DoubleSolenoid.Value.kReverse);
-	//	} else if (NotCircle == "off"){
-			//notGetCircledSolenoid.set(DoubleSolenoid.Value.kOff);
-	//	}
-	}
-
-	public void GetCircledV2(String CircledV2){
-		if (CircledV2 == "true"){
-			circledSolenoid.set(DoubleSolenoid.Value.kForward);
-		} else if (CircledV2 == "false"){
-			circledSolenoid.set(DoubleSolenoid.Value.kReverse);
-		} else if (CircledV2 == "off"){
-			circledSolenoid.set(DoubleSolenoid.Value.kOff);
-		}
-	}
-	
-	public void shiftGears(String shiftpos) {
-	 	if(shiftpos == "high") {
-	 		shifterSolenoids.set(DoubleSolenoid.Value.kForward);
-	 	} else if (shiftpos == "low") {
-	 		shifterSolenoids.set(DoubleSolenoid.Value.kReverse);
-	 	}
 	}
 
 	public void shiftUp() {
@@ -88,10 +39,10 @@ public class PneumaticsSubsytem extends Subsystem {
 	}
 	
 
-	public void intakeCircle()	{
+	public void OutGripper()	{
 	  InNOut.set(true);
 	} 
-	public void notIntakeCircle(){
+	public void InGripper(){
 		InNOut.set(false);
 	}
   @Override

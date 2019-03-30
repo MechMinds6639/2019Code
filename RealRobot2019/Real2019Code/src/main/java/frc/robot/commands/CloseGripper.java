@@ -6,21 +6,20 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-import frc.robot.subsystems.*;
+
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class NotGetCircledV2 extends Command {
-  public NotGetCircledV2() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
-    requires(Robot.pneumaticSubsystem);
+public class CloseGripper extends Command {
+  public CloseGripper() {
+  requires(Robot.pneumaticSubsystem);
+    
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.pneumaticSubsystem.notIntakeCircle();
+    Robot.pneumaticSubsystem.closeGripper();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -31,7 +30,7 @@ public class NotGetCircledV2 extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
