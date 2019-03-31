@@ -46,7 +46,7 @@ public class Robot extends TimedRobot {
      // clampSubsystem = new ClampSubsystem();
       oi = new OI();
       UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
-      camera1.setVideoMode(PixelFormat.kMJPEG, 200, 150, 30);
+      camera1.setVideoMode(PixelFormat.kMJPEG, 100, 75, 30);
 
     }
  

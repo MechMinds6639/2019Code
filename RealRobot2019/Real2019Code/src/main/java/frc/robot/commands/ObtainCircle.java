@@ -17,7 +17,8 @@ public class ObtainCircle extends CommandGroup {
    */
   public ObtainCircle() {
     addSequential(new OutGripper());
-    addSequential(new WaitCommand(.10));
+    addSequential(new WaitCommand(.11));
     addSequential(new OpenGripper());
+    addSequential(new ShiftDown());
   }
 }

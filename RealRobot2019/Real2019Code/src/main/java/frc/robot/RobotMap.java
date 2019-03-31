@@ -22,7 +22,7 @@ public class RobotMap {
   public static WPI_VictorSPX _winch2 = new WPI_VictorSPX(2);
   
   //SPEEDS
-  public static double maxSpeed = 1; //This value must be positive 
+  public static double maxSpeed = .75; //This value must be positive 
 
     
      
