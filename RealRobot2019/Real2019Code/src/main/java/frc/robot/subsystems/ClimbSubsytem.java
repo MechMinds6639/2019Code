@@ -28,13 +28,13 @@ public class ClimbSubsytem extends Subsystem {
   }
 
   public void climbUp(){
-    _winch1.set(.50); 
-    _winch2.set(-.75);
+    _winch1.set(.65); 
+    _winch2.set(-.65);
   }
 
   public void climbDown(){
-    _winch1.set(-.50);
-    _winch2.set(.75);
+    _winch1.set(-.65);
+    _winch2.set(.65);
   }
 
 
