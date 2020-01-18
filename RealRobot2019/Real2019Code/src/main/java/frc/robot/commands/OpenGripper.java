@@ -4,35 +4,32 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package frc.robot.commands;
-
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-import frc.robot.subsystems.*;
 
-public class NotGetCircled extends Command {
-  public NotGetCircled() {
-   
-
+public class OpenGripper extends Command {
+  public OpenGripper() {
+    requires(Robot.pneumaticSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    requires(Robot.pneumaticSubsystem);
+    Robot.pneumaticSubsystem.openGripper();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
   }
+  
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

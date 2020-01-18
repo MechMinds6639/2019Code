@@ -7,26 +7,14 @@
 
 package frc.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoMode.PixelFormat;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-//import com.ctre.phoenix.motorcontrol.Faults;
-//import com.ctre.phoenix.motorcontrol.InvertType;
-//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-//import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-//import edu.wpi.first.cameraserver.CameraServer;
-//import edu.wpi.cscore.UsbCamera;
-//import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-//import edu.wpi.first.wpilibj.*;
-// import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-// import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.*;//import com.ctre.phoenix.motorcontrol.Faults;//import com.ctre.phoenix.motorcontrol.InvertType;//import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;//import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;//import edu.wpi.first.cameraserver.CameraServer;//import edu.wpi.cscore.UsbCamera;//import edu.wpi.first.wpilibj.Joystick;//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-//import edu.wpi.first.wpilibj.SensorUtil;
-//import edu.wpi.first.wpilibj.buttons.*;
-//import frc.robot.RobotMap;
+import frc.robot.subsystems.*;
 import frc.robot.OI;
 /**
  * Enable robot and slowly drive forward.
@@ -41,37 +29,33 @@ import frc.robot.OI;
 public class Robot extends TimedRobot {
     public static DriveSubsystem driveSubsystem;
     public static PneumaticsSubsytem pneumaticSubsystem;
-    // public static Object climbSubsystem;
-    // public static Object Compressor;
-    //Joystick _joystick = new Joystick(0);
-    //UsbCamera camera1;
-    // public static PneumaticsSubsytem Pnuematics;
-    
+    public static ClimbSubsytem climbSubsytem;
+    //public static ClampSubsystem clampSubsystem;
+      
     Command m_autonomousCommand;
     SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-
-    //THEESE HAVE TO AT THE BOTTOM
+    //HAS TO BE AT THE BOTTOM
     public static OI oi;
-
-  
 
     @Override
     public void robotInit() {
       driveSubsystem = new DriveSubsystem();
       pneumaticSubsystem = new PneumaticsSubsytem();
+      climbSubsytem = new ClimbSubsytem();
+     // clampSubsystem = new ClampSubsystem();
       oi = new OI();
+      UsbCamera camera1 = CameraServer.getInstance().startAutomaticCapture(0);
+      camera1.setVideoMode(PixelFormat.kMJPEG, 100, 75, 30);
 
     }
  
   @Override
   public void robotPeriodic() {
-
   }
 
   @Override
   public void disabledInit() {
-
   }
 
   @Override

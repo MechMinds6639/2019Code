@@ -5,20 +5,20 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.subsystems;
+package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+//import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
-/**
- * Add your docs here.
- */
-public class ClampSubsystem extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
-
-  @Override
-  public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+public class ObtainCircle extends CommandGroup {
+  /**
+   * Add your docs here.
+   */
+  public ObtainCircle() {
+    addSequential(new OutGripper());
+    addSequential(new WaitCommand(.11));
+    addSequential(new OpenGripper());
+    addSequential(new ShiftDown());
   }
 }
